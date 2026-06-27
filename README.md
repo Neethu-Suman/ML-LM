@@ -4,13 +4,13 @@ An end-to-end MLOps (Machine Learning Operations) pipeline demonstrating Continu
 
 The system automatically trains a model, validates that its accuracy meets production standards via automated tests, and packages the verified model as a deployment-ready artifact using GitHub Actions.
 
-🏗️ # Architecture & Pipeline Workflow
+## 🏗️ Architecture & Pipeline Workflow
 
 This project implements a standard automated MLOps loop:
 
 Plaintext
 
-  [ Code Push ] ➡️ [ GitHub Actions Runner ] ➡️ [ Install ML Dependencies ] ➡️ [ Evaluate Model Performance (R² > 0.80) ] ➡️ [ Deploy Trained Model Artifact ]
+    [ Code Push ] ➡️ [ GitHub Actions Runner ] ➡️ [ Install ML Dependencies ] ➡️ [ Evaluate Model Performance (R² > 0.80) ] ➡️ [ Deploy Trained Model Artifact ]
 
 Continuous Integration (CI): Every code commit triggers automated tests via pytest. The pipeline checks if the model script executes successfully and ensures the trained model's R^2
   performance score meets our minimum quality threshold.
