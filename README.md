@@ -75,13 +75,12 @@ To run the automated test suite locally exactly how the GitHub Actions runner ex
 ## 🛠️ CI/CD Gatekeeping Thresholds
 To prevent broken or underperforming models from reaching production, test_model.py enforces the following constraints:
 
-Artifact Integrity: The training script must generate both the .pkl and metrics.txt files without errors.
+•	Artifact Integrity: The training script must generate both the .pkl and metrics.txt files without errors.
 
-Performance Quality: The model's R 
-2
-  validation score must be ≥0.80.
+•	Performance Quality: The model's $R^2$ validation score must be $\ge 0.80$.
 
-Sanity Baseline Check: Given a test feature input of 5.0 on the linear equation (y=2x+1+noise), the model's prediction must fall logically within a realistic boundary (9.0≤prediction≤13.0).
+•	Sanity Baseline Check: Given a test feature input of 5.0 on the linear equation ($y = 2x + 1 + \text{noise}$), the model's prediction must fall logically within a realistic boundary ($9.0 \le \text{prediction} \le 13.0$).
 
-📄 License
+## 📄 License
+
 Distributed under the MIT License. See LICENSE for more information.
