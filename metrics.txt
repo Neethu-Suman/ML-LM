@@ -1,0 +1,3 @@
+R2_Score: 0.9825
+Slope: 1.9599
+Intercept: 1.1429
