@@ -12,22 +12,33 @@ Plaintext
 
     [ Code Push ] ➡️ [ GitHub Actions Runner ] ➡️ [ Install ML Dependencies ] ➡️ [ Evaluate Model Performance (R² > 0.80) ] ➡️ [ Deploy Trained Model Artifact ]
 
-Continuous Integration (CI): Every code commit triggers automated tests via pytest. The pipeline checks if the model script executes successfully and ensures the trained model's R^2
+1. Continuous Integration (CI): Every code commit triggers automated tests via pytest. The pipeline checks if the model script executes successfully and ensures the trained model's R^2
   performance score meets our minimum quality threshold.
 
-Continuous Deployment (CD): If and only if the evaluation checks pass, the pipeline packages the serialized model (linear_model.pkl) and its associated metadata (metrics.txt) as downloadable build artifacts.
+2. Continuous Deployment (CD): If and only if the evaluation checks pass, the pipeline packages the serialized model (linear_model.pkl) and its associated metadata (metrics.txt) as downloadable build artifacts.
 
-📂 Project Structure
+## 📂 Project Structure
+
 Plaintext
-📁 linear-regression-pipeline
-├── 📁 .github/
-│   └── 📁 workflows/
-│       └── 📄 ml_ci_cd.yml    # GitHub Actions workflow configuration
-├── 📄 train.py               # Linear regression training script
-├── 📄 test_model.py          # Pytest suite validating model accuracy and sanity
-└── 📄 requirements.txt       # Python environment dependencies
-🚀 Getting Started (Local Setup)
+
+    📁 linear-regression-pipeline
+    
+    ├── 📁 .github/
+    
+    │   └── 📁 workflows/
+    
+    │       └── 📄 ml_ci_cd.yml    # GitHub Actions workflow configuration
+    
+    ├── 📄 train.py               # Linear regression training script
+    
+    ├── 📄 test_model.py          # Pytest suite validating model accuracy and sanity
+    
+    └── 📄 requirements.txt       # Python environment dependencies
+
+## 🚀 Getting Started (Local Setup)
+
 Prerequisites
+
 Make sure you have Python 3.10+ installed on your system.
 
 1. Clone and Install
