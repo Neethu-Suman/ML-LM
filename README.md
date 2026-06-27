@@ -8,18 +8,16 @@ The system automatically trains a model, validates that its accuracy meets produ
 
 This project implements a standard automated MLOps loop:
 
-Plaintext
 
     [ Code Push ] ➡️ [ GitHub Actions Runner ] ➡️ [ Install ML Dependencies ] ➡️ [ Evaluate Model Performance (R² > 0.80) ] ➡️ [ Deploy Trained Model Artifact ]
 
-1. Continuous Integration (CI): Every code commit triggers automated tests via pytest. The pipeline checks if the model script executes successfully and ensures the trained model's R^2
+**1. Continuous Integration (CI):** Every code commit triggers automated tests via pytest. The pipeline checks if the model script executes successfully and ensures the trained model's $R^2$
   performance score meets our minimum quality threshold.
 
-2. Continuous Deployment (CD): If and only if the evaluation checks pass, the pipeline packages the serialized model (linear_model.pkl) and its associated metadata (metrics.txt) as downloadable build artifacts.
+**2. Continuous Deployment (CD):** If and only if the evaluation checks pass, the pipeline packages the serialized model (linear_model.pkl) and its associated metadata (metrics.txt) as downloadable build artifacts.
 
 ## 📂 Project Structure
 
-Plaintext
 
     📁 linear-regression-pipeline
     
@@ -41,35 +39,40 @@ Prerequisites
 
 Make sure you have Python 3.10+ installed on your system.
 
-1. Clone and Install
+**1. Clone and Install**
+
 Open your terminal (or VS Code terminal) and run:
 
-Bash
-# Clone the repository
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
-cd linear-regression-pipeline
+    
+    #Clone the repository
+    
+    git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+    
+    cd linear-regression-pipeline
+    
+    #Install the required ML packages
+    
+    pip install -r requirements.txt
 
-# Install the required ML packages
-pip install -r requirements.txt
-2. Run Training Locally
+**2. Run Training Locally**
+
 To execute the pipeline manually and train the linear regression model:
 
-Bash
-python train.py
+    python train.py
+
 This will generate two files in your workspace:
 
-linear_model.pkl: The trained, serialized Scikit-Learn model.
+    •	linear_model.pkl: The trained, serialized Scikit-Learn model.
+    
+    •	metrics.txt: A text file capturing the model's $R^2$ score, calculated slope, and intercept.
 
-metrics.txt: A text file capturing the model's R 
-2
-  score, calculated slope, and intercept.
+**3. Run Validation Tests**
 
-3. Run Validation Tests
 To run the automated test suite locally exactly how the GitHub Actions runner executes it:
 
-Bash
-pytest test_model.py
-🛠️ CI/CD Gatekeeping Thresholds
+        pytest test_model.py
+
+## 🛠️ CI/CD Gatekeeping Thresholds
 To prevent broken or underperforming models from reaching production, test_model.py enforces the following constraints:
 
 Artifact Integrity: The training script must generate both the .pkl and metrics.txt files without errors.
