@@ -64,7 +64,7 @@ This will generate two files in your workspace:
 
     •	linear_model.pkl: The trained, serialized Scikit-Learn model.
     
-    •	metrics.txt: A text file capturing the model's $R^2$ score, calculated slope, and intercept.
+    •	metrics.txt: A text file capturing the model's R² score, calculated slope, and intercept.
 
 **3. Run Validation Tests**
 
@@ -77,7 +77,7 @@ To prevent broken or underperforming models from reaching production, test_model
 
 •	Artifact Integrity: The training script must generate both the .pkl and metrics.txt files without errors.
 
-•	Performance Quality: The model's $R^2$ validation score must be $\ge 0.80$.
+•	Performance Quality: The model's R² validation score must be $\ge 0.80$.
 
 •	Sanity Baseline Check: Given a test feature input of 5.0 on the linear equation ($y = 2x + 1 + \text{noise}$), the model's prediction must fall logically within a realistic boundary ($9.0 \le \text{prediction} \le 13.0$).
 
