@@ -16,13 +16,16 @@ def test_ml_pipeline():
         lines = f.readlines()
         r2_score = float(lines[0].split(": ")[1].strip())
 
-    # Ensure the model accuracy meets the production threshold
-    assert r2_score >= 0.80, f"Model performance dropped! R² is only {r2_score}"
+    # Real-world single feature baseline threshold for California Housing
+    assert r2_score >= 0.40, f"Model performance dropped below baseline! R² is {r2_score}"
 
     # 4. Functional Sanity Check: Ensure model predicts logical values
     model = joblib.load("linear_model.pkl")
-    test_input = np.array([[5.0]])
-    prediction = model.predict(test_input)[0][0]
     
-    # Given y = 2x + 1, x=5 should yield a result close to 11
-    assert 9.0 <= prediction <= 13.0, f"Unreasonable model prediction: {prediction}"
+    # Test input: An income of 5.0 ($50,000)
+    test_input = np.array([[5.0]])
+    prediction = model.predict(test_input)[0]
+    
+    # California house values are expressed in hundreds of thousands ($100,000s)
+    # An income of 5.0 should reasonably predict a house between $150k and $300k (1.5 to 3.0)
+    assert 1.5 <= prediction <= 3.0, f"Unreasonable house price prediction: {prediction}"
