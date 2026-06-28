@@ -26,5 +26,5 @@ To sync them up, follow these steps:
 
 3.	Run the following command:
 
-      git pull origin main
+            git pull origin main
 
